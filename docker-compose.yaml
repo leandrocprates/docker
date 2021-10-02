@@ -33,7 +33,7 @@ services:
       RABBITMQ_USER: guest
       RABBITMQ_PASSWORD: guest
     volumes:
-      - C:/Users/INEX/Desktop/codigo_fonte/docker/rabbitmq/data:/var/lib/rabbitmq
+      - ./rabbitmq/data:/var/lib/rabbitmq
 
   redis:
     image: redis:6.2.5-alpine

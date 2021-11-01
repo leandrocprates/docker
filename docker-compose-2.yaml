@@ -13,4 +13,4 @@ services:
     ports:
       - 8080:80
 
-    
+#docker-compose    -f  docker-compose-2.yaml  up

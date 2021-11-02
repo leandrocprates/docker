@@ -74,4 +74,6 @@ networks:
     external:
       name: external-example
 
+#docker network create external-example                     Criar rede entre containers
 #docker-compose  up -d 
+

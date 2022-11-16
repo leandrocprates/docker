@@ -1,0 +1,18 @@
+
+
+
+
+kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+
+kubectl get deployment
+
+kubectl get pods
+
+kubectl describe  pods nginx-deployment-6595874d85-7smqz
+
+
+kubectl apply -f  nginx-deployment.yaml
+
+kubectl scale deployment/nginx-deployment --replicas=8
+ 
+

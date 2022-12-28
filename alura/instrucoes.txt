@@ -75,4 +75,14 @@ c - executa service em nó da vm4
     docker service update --constraint-add node.hostname==vm4 ci10k3u7q6ti
 
 
+Remover restricoes do service : 
+docker service update --constraint-rm node.role==worker k5djahjp47b1
+
+Aumentando a quantidade de replicas : 
+docker service update --replicas 4 k5djahjp47b1
+
+
+Sobe serviço global em todas as VMs : 
+docker service create -p 9000:3000 aluracursos/barbearia
+
 

@@ -5,6 +5,7 @@ apt-get install iputils-ping -y
 
 docker run -d --network minha-bridge --name meu-mongo   mongo:4.4.6 
 docker run -d --network minha-bridge --name alurabooks  -p 3000:3000  aluradocker/alura-books:1.0
+---------------------------------------------------------------------------------------------------------
 
 Docker swarm 
 
@@ -14,7 +15,7 @@ docker swarm init
 docker swarm leave --force
 
 
-Instalar docker-machine : 
+Instalar docker-machine:
 
 https://github.com/docker/machine/releases/
 
@@ -28,16 +29,22 @@ chmod +x "$HOME/bin/docker-machine.exe"
 Criar maquina virtual com virtualbox : 
 docker-machine create -d virtualbox --virtualbox-no-vtx-check vm1
 
-Entra na maquina criada: 
+Entra na maquina criada:
 docker-machine ssh vm1
 
-Criar docker swarm : 
+Sobe maquina parada:
+docker-machine start vm1
+
+Lista Maquinas criadas:
+docker-machine ls
+
+Criar docker swarm:
 docker swarm init --advertise-addr  192.168.99.101
 
 Recuperar Token  para registrar workers dentro da vm1 : 
 docker swarm join-token worker
 
-Lista nós do swarm : 
+Lista nós do swarm:
 docker node ls
 
 Sobe servico no swarm:
@@ -47,7 +54,25 @@ docker service create -p 9000:3000 aluracursos/barbearia
 Lista serviços executando:
 docker service ls
 
-Lista detalhes de um service como maquina que esta executando o container: 
+Lista detalhes de um service como maquina que esta executando o container:
 docker service ps pzhi0dqhvkpc
+
+
+Recuper Token para Registras novos Managers : 
+docker swarm join-token manager 
+
+
+Restringe nós de executar services : 
+docker node update --availability drain  vm1
+
+Restringe service de executar numa VM : 
+
+a - executa somente em nós workers: 
+    docker service update --constraint-add node.role==worker k5djahjp47b1 (Id Service)
+b - executa service em node de id especifico 
+    docker service update --constraint-add node.id==t76gee19fjs8 ci10k3u7q6ti
+c - executa service em nó da vm4 
+    docker service update --constraint-add node.hostname==vm4 ci10k3u7q6ti
+
 
 

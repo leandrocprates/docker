@@ -50,6 +50,9 @@ docker node ls
 Sobe servico no swarm:
 docker service create -p 9000:3000 aluracursos/barbearia
 
+docker service create -p 9001:3000 --name servicobarbearia --replicas 5 aluracursos/barbearia
+
+
 
 Lista serviços executando:
 docker service ls
@@ -83,6 +86,14 @@ docker service update --replicas 4 k5djahjp47b1
 
 
 Sobe serviço global em todas as VMs : 
-docker service create -p 9000:3000 aluracursos/barbearia
+docker service create -p 9000:3000 --mode global aluracursos/barbearia
 
 
+Sobe servicos usando docker-compose.yaml:
+docker stack deploy --compose-file docker-compose.yml  vote
+
+Lista as stack carregadas: 
+docker stack ls 
+
+Remove toda a stack : 
+docker stack rm vote

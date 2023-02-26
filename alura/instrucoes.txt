@@ -97,3 +97,4 @@ docker stack ls
 
 Remove toda a stack : 
 docker stack rm vote
+

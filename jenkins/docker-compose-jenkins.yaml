@@ -11,6 +11,6 @@ services:
     container_name: jenkins
     volumes:
       - ./jenkins_configuration:/var/jenkins_home
-      - ./docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
 
 #docker-compose -f docker-compose-jenkins.yaml up -d 

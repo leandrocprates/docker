@@ -2,13 +2,13 @@ version: "3"
 
 services:
   sonarqube:
-    image: sonarqube:8.9-community
+    image: sonarqube:latest
     expose:
       - 9000
     ports:
       - "127.0.0.1:9000:9000"
   apache:
-    image: apache-server:latest
+    image: httpd:latest
     container_name: apache-server
     ports:
       - 8080:80

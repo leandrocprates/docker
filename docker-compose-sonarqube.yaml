@@ -1,0 +1,20 @@
+version: "3"
+services:
+  SonarQube:
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      #- /data/docker/sonarqube/conf:/opt/sonarqube/conf
+      - ./sonarqube/data:/opt/sonarqube/data
+      - ./sonarqube/logs:/opt/sonarqube/logs
+      - ./sonarqube/extensions:/opt/sonarqube/extensions
+    ulimits:
+      nproc: 131072
+      nofile:
+        soft: 8192
+        hard: 131072
+
+
+#docker-compose  -f  docker-compose-sonarqube.yaml up -d  
+

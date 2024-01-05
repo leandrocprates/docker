@@ -1,0 +1,39 @@
+
+Kafka - Testes comandos 
+
+
+cria topico : 
+/bin/kafka-topics  --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic loja_novopedido 
+
+lista topicos : 
+/bin/kafka-topics --list --bootstrap-server localhost:9092
+
+
+Descreve topicos : 
+/bin/kafka-topics --bootstrap-server localhost:9092 --describe
+
+
+Entra dentro do conteiner pelo shell : 
+docker exec -it fd93d9312a19  /bin/bash
+
+
+criar mensagem para o kafka : 
+/bin/kafka-console-producer  --broker-list localhost:9092 --topic loja_novopedido
+
+
+consome mensagem a partir do proximo envio : 
+/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic loja_novopedido
+
+
+consome mensagens desde o começo : 
+/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic loja_novopedido --from-beginning
+
+
+reparticionar topico :
+/bin/kafka-topics --alter --bootstrap-server localhost:9092  --topic ECOMMERCE_NEW_ORDER --partitions 2
+
+
+descreve grupos : 
+/bin/kafka-consumer-groups --all-groups  --bootstrap-server localhost:9092 --describe
+
+

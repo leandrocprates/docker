@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+
+  rabbit:
+    image: rabbitmq:3.8-management
+    container_name: rabbitmq38
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+
+
+#docker-compose  -f docker-compose-rabbitmq.yaml  up -d 
+
